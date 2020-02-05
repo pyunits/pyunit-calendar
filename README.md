@@ -9,7 +9,7 @@
 Python版阳历转农历
 
 #### 安装
-    pip install pyunit_calendar
+    pip install pyunit-calendar
     
 ## 阳历和农历相互转换
 ```python
