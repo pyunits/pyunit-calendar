@@ -134,7 +134,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'jtyoui.tex', 'jtyoui Documentation',
+    (master_doc, 'pyUnit_calendar.tex', 'pyUnit_calendar Documentation',
      '张伟', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'jtyoui', 'jtyoui Documentation',
+    (master_doc, 'pyUnit_calendar', 'pyUnit_calendar Documentation',
      [author], 1)
 ]
 
