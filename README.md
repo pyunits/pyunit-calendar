@@ -1,18 +1,15 @@
-# **PLunar** [![](https://gitee.com/tyoui/logo/raw/master/logo/photolog.png)][1]
+# **pyUnit_calendar** [![](https://gitee.com/tyoui/logo/raw/master/logo/photolog.png)][1]
 
 
 ## 这是一个阳历转化农历的程序
-[![](https://img.shields.io/badge/个人网站-jtyoui-yellow.com.svg)][1]
-[![](https://img.shields.io/badge/Python-3.6-green.svg)]()
-[![](https://img.shields.io/badge/BlogWeb-Tyoui-bule.svg)][1]
-[![](https://img.shields.io/badge/Email-jtyoui@qq.com-red.svg)]()
+[![](https://img.shields.io/badge/Python-3.8-green.svg)]()
 [![](https://img.shields.io/badge/项目-jtyoui.plunar-black.svg)]()
 
 #### 介绍
 Python版阳历转农历
 
 #### 安装
-    pip install jtyoui
+    pip install pyunit_calendar
     
 ## 阳历和农历相互转换
 ```python
