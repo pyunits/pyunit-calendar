@@ -2,8 +2,8 @@
 
 
 ## 这是一个阳历转化农历的程序
-[![](https://img.shields.io/badge/Python-3.8-green.svg)]()
-[![](https://img.shields.io/badge/项目-jtyoui.plunar-black.svg)]()
+[![](https://img.shields.io/badge/Python-3.8-green.svg)](https://pypi.org/project/pyunit-calendar/2019.5.9/)
+[![](https://img.shields.io/badge/项目-jtyoui.plunar-black.svg)](https://github.com/jtyoui/Jtyoui)
 
 #### 介绍
 Python版阳历转农历
