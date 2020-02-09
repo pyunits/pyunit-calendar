@@ -4,7 +4,7 @@
 # @Author: Jtyoui@qq.com
 from setuptools import setup, find_packages
 
-from pyunit_calendar import __version__, __author__, __description__, __email__, __names__
+from pyunit_calendar import __version__, __author__, __description__, __email__, __names__, __url__
 
 with open('README.md', encoding='utf-8') as f:
     long_text = f.read()
@@ -18,7 +18,7 @@ setup(
     description=__description__,
     long_description=long_text,
     long_description_content_type="text/markdown",
-    url='https://github.com/PyUnit/pyunit-calendar',
+    url=__url__,
     author=__author__,
     author_email=__email__,
     license='MIT Licence',
