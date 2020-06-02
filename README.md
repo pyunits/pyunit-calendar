@@ -14,22 +14,22 @@ Python版阳历转农历
 ## 如果阳历和农历相互转换推荐使用
 ```python
 from pyunit_calendar import LunarDate,LunarSolarDateConverter,SolarDate
-if __name__ == '__main__':
+if __name__ == "__main__":
     """测试简单快速的农历和阳历互转"""
     converter = LunarSolarDateConverter()
     lunar = converter.solar_to_lunar(SolarDate(2019, 12, 6))
     print(lunar)
-    # {'isleap': False, 'lunarDay': 11, 'lunarMonth': 11, 'lunarYear': 2019}
+    # {"isleap": False, "lunarDay": 11, "lunarMonth": 11, "lunarYear": 2019}
     solar = converter.lunar_to_solar(LunarDate(2019, 11, 10))
     print(solar)
-    # {'solarDay': 5, 'solarMonth': 12, 'solarYear': 2019}
+    # {"solarDay": 5, "solarMonth": 12, "solarYear": 2019}
 ```
 
 ## 如果只有阳历转农历推荐使用
 ```python
 from pyunit_calendar import SC
     
-if __name__ == '__main__':
+if __name__ == "__main__":
     lun = SC(year=2018, month=1, day=2) #阳历转农历
     print(lun.y)  # 农历的年,中文字符 二零一九
     print(lun.year)  # 农历的年，阿拉伯数字 2019
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 ## 如果只有农历转阳历推荐使用
 ```python
 from pyunit_calendar import CTC
-if __name__ == '__main__':
+if __name__ == "__main__":
     c = CTC(ctc_year=2017, ctc_mon=-6, ctc_day=8)  # 农历的日期2017年闰6月初八
     print(c.find_sc())  # 阳历：2017年7月30日
     print(c.get_year())  # 2017
@@ -59,20 +59,133 @@ if __name__ == '__main__':
 ```python
 from pyunit_calendar import BatchCalendar
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     bc=BatchCalendar() #下载数据
-    print('-----------------------------')
+    print("-----------------------------")
     # 农历
-    print(bc.ctc_to_sc('1984年闰十月初三'))  # 农历转阳历 1984年11月25日
-    print(bc.ctc_to_td('1984年闰十月初三'))  # 农历转天干地支 甲子年乙亥月癸亥日
-    print('-----------------------------')
+    print(bc.ctc_to_sc("1984年闰十月初三"))  # 农历转阳历 1984年11月25日
+    print(bc.ctc_to_td("1984年闰十月初三"))  # 农历转天干地支 甲子年乙亥月癸亥日
+    print("-----------------------------")
     # 阳历
-    print(bc.sc_to_ctc('1984年11月25日'))  # 阳历转农历 1984年闰十月初三
-    print(bc.sc_to_td('1984年11月25日'))  # 阳历转天干地支 甲子年乙亥月癸亥日
-    print('-----------------------------')
+    print(bc.sc_to_ctc("1984年11月25日"))  # 阳历转农历 1984年闰十月初三
+    print(bc.sc_to_td("1984年11月25日"))  # 阳历转天干地支 甲子年乙亥月癸亥日
+    print("-----------------------------")
     # 天干地支
-    print(bc.td_to_ctc('甲子年乙亥月癸亥日'))  # 天干地支转农历:['1984年闰十月初三', '2044年九月廿一']
-    print(bc.td_to_sc('甲子年乙亥月癸亥日'))  # 天干地支转阳历:['1984年11月25日', '2044年11月10日']
+    print(bc.td_to_ctc("甲子年乙亥月癸亥日"))  # 天干地支转农历:["1984年闰十月初三", "2044年九月廿一"]
+    print(bc.td_to_sc("甲子年乙亥月癸亥日"))  # 天干地支转阳历:["1984年11月25日", "2044年11月10日"]
+```
+
+## Docker安装
+    docker pull pyunit-calendar
+    docker run -P --restart=always --name=calendar -d  pyunit-calendar
+
+
+### 农历转阳历
+|**参数名**|**类型**|**是否可以为空**|**说明**|
+|------|------|-------|--------|
+|year|int|YES|输入阿拉伯数字的年|
+|month|int|YES|输入阿拉伯数字的月(如果是闰月前面添加负号:如-4表示闰4月)|
+|day|int|YES|输入阿拉伯数字的日|
+
+### 请求示例
+> #### Python3 Requests测试
+```python
+import requests
+
+url = "http://127.0.0.1:32768/pyunit/calendar/LunarCalendar"
+data = {
+    "year": 2020,
+    "month": 6,
+    "day": 2
+}
+headers = {"Content-Type": "application/x-www-form-urlencoded"}
+response = requests.post(url, data=data, headers=headers).json()
+print(response)
+``` 
+
+> #### 返回结果
+```json
+{
+	"code": 200,
+	"result": {
+		"date": "2020年6月2日",
+		"day": "2",
+		"month": "6",
+		"year": "2020"
+	}
+}
+```
+
+### 阳历转农历
+|**参数名**|**类型**|**是否可以为空**|**说明**|
+|------|------|-------|--------|
+|year|int|YES|输入阿拉伯数字的年|
+|month|int|YES|输入阿拉伯数字的月|
+|day|int|YES|输入阿拉伯数字的日|
+
+### 请求示例
+> #### Python3 Requests测试
+```python
+import requests
+
+url = "http://127.0.0.1:32768/pyunit/calendar/SolarCalendar"
+data = {
+    "year": 2020,
+    "month": 6,
+    "day": 2
+}
+headers = {"Content-Type": "application/x-www-form-urlencoded"}
+response = requests.post(url, data=data, headers=headers).json()
+print(response)
+``` 
+
+> #### 返回结果
+```json
+{
+	"code": 200,
+	"result": {
+		"date": "二零二零年 闰四月 十一 星期二 节日：无",
+		"day": "十一",
+		"holiday": "无",
+		"is_leap": "是",
+		"month": "闰四",
+		"week": "星期二",
+		"year": "二零二零"
+	}
+}
+```
+
+### 天干地支和农历和阳历相互转日期
+|**参数名**|**类型**|**是否可以为空**|**说明**|
+|------|------|-------|--------|
+|date|string|YES|输入当前的日期:可以输入三种格式,具体看请求示例|
+
+### 请求示例
+> #### Python3 Requests测试
+```python
+import requests
+
+url = "http://127.0.0.1:32768/pyunit/calendar/BatchCalendar"
+data = {
+    "date": '2020年四月十一',  # 农历格式:阿拉伯数字+年+中文数字+月+中文数字
+    # "date": "2020年05月03日",  # 农历格式:阿拉伯数字+年+阿拉伯数字+月+阿拉伯数字+日
+    # "date": "庚子年庚辰月丙午日",  # 农历格式:天干地支+年+天干地支+月+天干地支+日
+}
+headers = {"Content-Type": "application/x-www-form-urlencoded"}
+response = requests.post(url, data=data, headers=headers).json()
+print(response)
+``` 
+
+> #### 返回结果
+```json
+{
+	"code": 200,
+	"result": {
+		"HSTTB": "庚子年庚辰月丙午日",
+		"LunarCalendar": "2020年四月十一",
+		"SolarCalendar": "2020年05月03日"
+	}
+}
 ```
 
 [1]: https://blog.jtyoui.com

@@ -25,8 +25,8 @@ class CTC:
             self.raw_date = F'{ctc_year}年闰{self.ctc_mon}月{ctc_day}日'
         else:
             self.raw_date = F'{ctc_year}年{self.ctc_mon}月{ctc_day}日'
-        self.sc_start_year = ctc_year - 1 if ctc_mon <= 3 else ctc_year
-        self.sc_end_year = ctc_year + 1 if ctc_mon >= 10 else ctc_year
+        self.sc_start_year = (ctc_year - 1) if ctc_mon <= 3 else ctc_year
+        self.sc_end_year = (ctc_year + 1) if ctc_mon >= 10 else ctc_year
         self.sc_start_mon = (ctc_mon + 12 - 3) % 12
         self.sc_end_mon = (ctc_mon + 12 + 3) % 12
         self.sc_start_mon = self.sc_start_mon if self.sc_start_mon else 12
