@@ -10,20 +10,22 @@ Python版阳历转农历
 
 #### 安装
     pip install pyunit-calendar
-    
-## 阳历和农历相互转换
-```python
-from pyunit_calendar import LunarSolarDateConverter,SolarDate,LunarDate
 
+## 如果阳历和农历相互转换推荐使用
+```python
+from pyunit_calendar import LunarDate,LunarSolarDateConverter,SolarDate
 if __name__ == '__main__':
-    converter = LunarSolarDateConverter() #阳历和农历相互转换
-    lunar = converter.solar_to_lunar(SolarDate(2019, 12, 6)) #阳历转农历
-    print(lunar) #{'isleap': False, 'lunarDay': 11, 'lunarMonth': 11, 'lunarYear': 2019}
-    solar = converter.lunar_to_solar(LunarDate(2019, 11, 10)) #农历转阳历
-    print(solar) #{'solarDay': 5, 'solarMonth': 12, 'solarYear': 2019}
+    """测试简单快速的农历和阳历互转"""
+    converter = LunarSolarDateConverter()
+    lunar = converter.solar_to_lunar(SolarDate(2019, 12, 6))
+    print(lunar)
+    # {'isleap': False, 'lunarDay': 11, 'lunarMonth': 11, 'lunarYear': 2019}
+    solar = converter.lunar_to_solar(LunarDate(2019, 11, 10))
+    print(solar)
+    # {'solarDay': 5, 'solarMonth': 12, 'solarYear': 2019}
 ```
 
-## 阳历转农历
+## 如果只有阳历转农历推荐使用
 ```python
 from pyunit_calendar import SC
     
@@ -41,7 +43,7 @@ if __name__ == '__main__':
     print(lun)  # 二零一九年 七月 十四 星期四 无
 ```
 
-## 农历转阳历
+## 如果只有农历转阳历推荐使用
 ```python
 from pyunit_calendar import CTC
 if __name__ == '__main__':
@@ -53,27 +55,24 @@ if __name__ == '__main__':
 
 ```
 
-
-## 天干地支转日历
+## 天干地支转日历(转阳历和农历)
 ```python
 from pyunit_calendar import BatchCalendar
 
 if __name__ == '__main__':
-    BatchCalendar.load_date('temp') #下载数据
+    bc=BatchCalendar() #下载数据
     print('-----------------------------')
     # 农历
-    print(BatchCalendar.ctc_to_sc('1984年闰十月初三'))  # 农历转阳历 1984年11月25日
-    print(BatchCalendar.ctc_to_td('1984年闰十月初三'))  # 农历转天干地支 甲子年乙亥月癸亥日
+    print(bc.ctc_to_sc('1984年闰十月初三'))  # 农历转阳历 1984年11月25日
+    print(bc.ctc_to_td('1984年闰十月初三'))  # 农历转天干地支 甲子年乙亥月癸亥日
     print('-----------------------------')
     # 阳历
-    print(BatchCalendar.sc_to_ctc('1984年11月25日'))  # 阳历转农历 1984年闰十月初三
-    print(BatchCalendar.sc_to_td('1984年11月25日'))  # 阳历转天干地支 甲子年乙亥月癸亥日
+    print(bc.sc_to_ctc('1984年11月25日'))  # 阳历转农历 1984年闰十月初三
+    print(bc.sc_to_td('1984年11月25日'))  # 阳历转天干地支 甲子年乙亥月癸亥日
     print('-----------------------------')
     # 天干地支
-    print(BatchCalendar.td_to_ctc('甲子年乙亥月癸亥日'))  # 天干地支转农历:['1984年闰十月初三', '2044年九月廿一']
-    print(BatchCalendar.td_to_sc('甲子年乙亥月癸亥日'))  # 天干地支转阳历:['1984年11月25日', '2044年11月10日']
+    print(bc.td_to_ctc('甲子年乙亥月癸亥日'))  # 天干地支转农历:['1984年闰十月初三', '2044年九月廿一']
+    print(bc.td_to_sc('甲子年乙亥月癸亥日'))  # 天干地支转阳历:['1984年11月25日', '2044年11月10日']
 ```
-
-
 
 [1]: https://blog.jtyoui.com

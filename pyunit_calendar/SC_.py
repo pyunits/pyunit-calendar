@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 # @Time  : 2019/5/9 11:48
 # @Author: Jtyoui@qq.com
-
-"""
+"""专属的阳历转农历,包含阳历各种细节
 SC (solar calendar)：阳历
 阳历转农历
 """
-
 import time
+
 from .config import holiday, week_to_chinese, chinese_mon
 
 

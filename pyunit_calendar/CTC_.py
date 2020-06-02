@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time  : 2019/5/9 11:47
 # @Author: Jtyoui@qq.com
-
-"""
+"""专属的农历转阳历,包含了农历中的各种细节
 CTC (Chinese traditional calendar)：农历
 农历转阳历
 """
