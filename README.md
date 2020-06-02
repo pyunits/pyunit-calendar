@@ -76,8 +76,8 @@ if __name__ == "__main__":
 ```
 
 ## Docker安装(注意该模块严重依赖时间,所以系统中的时间和时区必须是:中国北京时间和中国时区)
-    docker pull pyunit-calendar
-    docker run -P -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime -d pyunit-calendar
+    docker pull jtyoui/pyunit-calendar
+    docker run -P -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime -d jtyoui/pyunit-calendar
 
 
 ### 农历转阳历
