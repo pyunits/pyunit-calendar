@@ -1,16 +1,15 @@
 # **pyUnit_calendar** [![](https://gitee.com/tyoui/logo/raw/master/logo/photolog.png)][1]
 
 
-## 这是一个阳历转化农历的程序
+## 这是一个阳历转化农历的程序(注意该模块严重依赖时间,所以系统中的时间和时区必须是:中国北京时间和中国时区)
 [![](https://img.shields.io/badge/Python-3.8-green.svg)](https://pypi.org/project/pyunit-calendar/2019.5.9/)
 [![](https://img.shields.io/badge/项目-jtyoui.plunar-black.svg)](https://github.com/jtyoui/Jtyoui)
 
 #### 介绍
 Python版阳历转农历
 
-#### 安装(注意该模块严重依赖时间,所以系统中的时间和时区必须是:中国北京时间和中国时区)
+#### 安装
     pip install pyunit-calendar
-    docker run -P -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime -d pyunit-calendar
 
 ## 如果阳历和农历相互转换推荐使用
 ```python
@@ -76,9 +75,9 @@ if __name__ == "__main__":
     print(bc.td_to_sc("甲子年乙亥月癸亥日"))  # 天干地支转阳历:["1984年11月25日", "2044年11月10日"]
 ```
 
-## Docker安装
+## Docker安装(注意该模块严重依赖时间,所以系统中的时间和时区必须是:中国北京时间和中国时区)
     docker pull pyunit-calendar
-    docker run -P --restart=always --name=calendar -d  pyunit-calendar
+    docker run -P -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime -d pyunit-calendar
 
 
 ### 农历转阳历
