@@ -95,8 +95,8 @@ import requests
 url = "http://127.0.0.1:32768/pyunit/calendar/LunarCalendar"
 data = {
     "year": 2020,
-    "month": 6,
-    "day": 2
+    "month": -4,
+    "day": 11
 }
 headers = {"Content-Type": "application/x-www-form-urlencoded"}
 response = requests.post(url, data=data, headers=headers).json()
