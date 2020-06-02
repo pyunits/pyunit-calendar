@@ -8,8 +8,9 @@
 #### 介绍
 Python版阳历转农历
 
-#### 安装
+#### 安装(注意该模块严重依赖时间,所以系统中的时间和时区必须是:中国北京时间和中国时区)
     pip install pyunit-calendar
+    docker run -P -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime -d pyunit-calendar
 
 ## 如果阳历和农历相互转换推荐使用
 ```python
